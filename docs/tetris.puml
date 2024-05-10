@@ -1,0 +1,62 @@
+@startuml tetris 
+class Juego {
+    -tablero
+    -piezaActual
+    -puntuacion
+    +iniciarJuego()
+    +moverPieza()
+    +rotarPieza()
+    +verificarLineasCompletas()
+}
+
+class Tablero {
+    -matriz
+    +dibujarTablero()
+    +eliminarLineaCompleta()
+}
+
+class Pieza {
+    -tipo
+    -posicion
+    +moverAbajo()
+    +moverIzquierda()
+    +moverDerecha()
+    +rotar()
+}
+
+class Posicion {
+    -x
+    -y
+}
+
+class Nivel
+class Direccion
+class TipoPieza
+class Jugador
+class Puntuacion 
+class Vida
+class Colisionable
+
+Juego "1" *-- "1" Tablero
+Juego "1" *-- "*" Pieza
+Juego "1" *-- "*" Nivel 
+Juego "1" *-- "1" Jugador 
+
+Pieza "1" o-- "7" TipoPieza
+Pieza "1" *-- "2" Posicion
+Pieza "1" *-- "3" Direccion
+
+Jugador "1" *-- "1" Vida 
+Jugador "1" *-- "1" Puntuacion 
+
+PiezaI --|> TipoPieza
+PiezaJ --|> TipoPieza
+PiezaL --|> TipoPieza
+PiezaO --|> TipoPieza
+PiezaS --|> TipoPieza
+PiezaT --|> TipoPieza
+PiezaZ --|> TipoPieza
+Pieza --|> Colisionable
+Tablero --|> Colisionable
+
+@enduml
